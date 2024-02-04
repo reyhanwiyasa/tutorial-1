@@ -23,13 +23,17 @@ public class ProductController {
         model.addAttribute("product", product);
         return "createProduct";
     }
-
     @PostMapping("/create")
     public String createProductPost(@ModelAttribute Product product, Model model){
         service.create(product);
         return "redirect:list";
     }
 
+    @PostMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable("id") String productId){
+        service.delete(productId);
+        return "redirect:../list";
+    }
     @GetMapping("/list")
     public String productListPage(Model model){
         List<Product> allProducts = service.findAll();

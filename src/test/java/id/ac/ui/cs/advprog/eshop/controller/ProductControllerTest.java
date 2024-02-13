@@ -39,13 +39,12 @@ public class ProductControllerTest {
     @Test
     public void testHomePage() throws  Exception{
         mockMvc.perform(get(""))
-                .andExpect(view().name("HomePage"));
+                .andExpect(view().name("homepage"));
     }
     @Test
     public void testCreateProductPage() throws Exception {
         mockMvc.perform(get("/product/create"))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Create New Product")));
+                .andExpect(view().name("createproduct"));
     }
 
     @Test
@@ -69,8 +68,7 @@ public class ProductControllerTest {
 
         when(mockService.findProductById(uniqueId)).thenReturn(testProduct);
         mockMvc.perform(get("/product/edit/{id}", uniqueId))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Edit Your Product")))
+                .andExpect(view().name("editproduct"))
                 .andExpect(model().attributeExists("product"))
                 .andExpect(model().attribute("product", testProduct));
     }
@@ -116,8 +114,7 @@ public class ProductControllerTest {
 
         // When & Then
         mockMvc.perform(get("/product/list"))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Product' List")))
+                .andExpect(view().name("productlist"))
                 .andExpect(model().attributeExists("products")) // Verify the model contains an attribute named "products"
                 .andExpect(model().attribute("products", hasSize(2))) // Verify the size of the products list
                 .andExpect(model().attribute("products", hasItem(

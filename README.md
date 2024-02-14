@@ -1,5 +1,23 @@
 # tutorial-1
 
+## Reflection 2
+#### 1. List the code quality issue(s) that you fixed during the exercise and explain your strategy on fixing them:
+
+Ketika pertama kali menjalankan code scanner, PMD mendeteksi ada beberapa code issues.
+Code issues yang terdeteksi oleh PMD meliputi:
+Redundant parentheses, Unused import, Missed branch. Saya memperbaiki kodenya
+dengan mengikuti instruksi dari hasil deteksi code scanner
+dan memperbaiki issues yang ada hingga hanya menyisakan satu issue yang tersisa.
+
+#### 2. Look at your CI/CD workflows (GitHub)/pipelines (GitLab). Do you think the current implementation has met the definition of Continuous Integration and Continuous Deployment? Explain the reasons (minimum 3 sentences)!
+
+Menurut saya, CI/CD yang saya implementasikan sudah memenuhi definisi dari CI/CD Deployment.
+Ketika saya mem-push ke branch master, maka Continuous Integration akan dijalankan sesuai kode yang ada pada ci.yml, 
+serta code scanner yang ada (scorecard dan PMD) juga akan meng-scan kode saya
+untuk mengecek quality issues yang ada. Dan untuk Continuous Development, akan dijalankan
+oleh PaaS Koyeb secara otomatis, sehingga sudah memenuhi definisi dari CI/CD development.
+
+
 ## Reflection 1
 Pada tutorial pertama dan di pekan pertama ini,
 saya telah mempelajari clean code, git workflow,

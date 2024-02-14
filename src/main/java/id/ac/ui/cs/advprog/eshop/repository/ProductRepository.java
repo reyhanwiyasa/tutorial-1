@@ -23,10 +23,8 @@ public class ProductRepository {
     }
     public void edit(Product editedProduct) {
         Product findProduct = findById(editedProduct.getProductId());
-        if (findProduct != null) {
-            findProduct.setProductName(editedProduct.getProductName());
-            findProduct.setProductQuantity(editedProduct.getProductQuantity());
-        }
+        findProduct.setProductName(editedProduct.getProductName());
+        findProduct.setProductQuantity(editedProduct.getProductQuantity());
     }
     public Product findById(String productId) {
         return productData.stream()

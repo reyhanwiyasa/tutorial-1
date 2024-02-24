@@ -2,7 +2,39 @@
 
 ## Reflection 3
 #### 1. Prinsip SOLID yang diaplikasikan
-- Single Responsibility Principle. Dalam tutorial kali ini, saya memisahkan kode 
+- Single Responsibility Principle. Dalam tutorial kali ini, saya memisahkan kode CarController dan HomeController dari
+ProductController karena ketiga controller tersebut memiliki tujuan berbeda. Saya juga menghilangkan extend ProductController
+pada CarController karena tidak diperlukan dan memiliki tujuan berbeda juga.
+- Open Close Principle. Method-method yang terdapat pada Car dan Product dapat dipakai untuk subclass-subclass nya,
+seperti edit, findById, create, dan delete
+- Interface Segregation. CarService dan ProductService dibuat terpisah karena object yang mengimplementasikannya hanya 
+mengimplementasikan salah satu saja, bukan keduanya.
+- Dependancy Inversion. Prinsip ini dilakukan pada CarController dengan mengganti tipe data CarServiceImpl menjadi CarService
+agar perubahan yang dilakukan di CarServiceImpl tidak merusak CarController.
+
+#### 2. Advantages of applying SOLID principles
+- Enhanced Maintainability. Penerapan SOLID principles membuat software lebih mudah untuk di-_maintain_ karena adanya 
+_separations of concern_, yang membuat tiap komponen menjadi lebih simpel dan mudah untuk dimengerti
+- Improved Testability. Software yang menerapkan SOLID principles akan menjadi lebih mudah untuk di test karena lebih sedikit
+_dependency_ dan juga interface yang lebih jelas.
+- Better Code Reusability. Komponen yang mengikuti SOLID principles akan dapat digunakan oleh komponen lain sehingga mengurangi
+terjadinya _redundant code_
+
+Beberapa contoh dari manfaat penerapan SOLID principles:
+- SRP. Misal terdapat class `UserManager` yang bertugas untuk menangani management data dan notifikasi user. Dengan menerapkan SRP,
+UserManager dapat dipisah menjadi `UserDataManager` dan `UserEmailNotifier` agar masing-masing kelas memiliki 1 tujuan saja.
+- OCP. Misal terdapat class `ReportGenerator` yang awalnya untuk menghasilkan laporan HTML. Untuk menambahkan object PDF 
+tanpa mengubah kelas yang ada, ReportGenerator dapat diperluas dengan subclass `PDFReportGenerator` yang mengimplementasikan object PDF.
+- ISP. Misal terdapat interface `MultiFunctionDevice` yang memiliki metode untuk mencetak, meng-_scan_, dan mengirim teks. 
+Tidak semua perangkat membutuhkan semua kemampuan ini. Dengan menerapkan ISP, interface dapat dibagi menjadi interface yang 
+lebih kecil: `Printer`, `Scanner`, dan `Text` sehingga perangkat hanya mengimplementasikan interface yang sesuai dengan fungsionalitasnya.
+
+#### Disadvantages of not applying SOLID principles
+- Increased Complexity. Tanpa SOLID Principles, berarti kita tidak menerapkan prinsip yang pertama, yaitu Single Responsibility
+Principles. Tanpa prinsip ini, kelas kita akan berusaha untuk menghandle banyak _responsibility_, yang menyebabkan kode menjadi
+kompleks dan sulit dibaca
+- Difficulties in Maintenance and Extension
+
 
 ## Reflection 2
 #### 1. List the code quality issue(s) that you fixed during the exercise and explain your strategy on fixing them:

@@ -33,7 +33,20 @@ lebih kecil: `Printer`, `Scanner`, dan `Text` sehingga perangkat hanya mengimple
 - Increased Complexity. Tanpa SOLID Principles, berarti kita tidak menerapkan prinsip yang pertama, yaitu Single Responsibility
 Principles. Tanpa prinsip ini, kelas kita akan berusaha untuk menghandle banyak _responsibility_, yang menyebabkan kode menjadi
 kompleks dan sulit dibaca
-- Difficulties in Maintenance and Extension
+- Difficulties in Maintenance and Extension. Tanpa Open Closed Principle, meng-_extend_ sebuah fungsionalitas dari kode
+memerlukan kita untuk memodif kode itu sendiri. Hal ini dapat menimbulkan bug dari kode yang sudah lulus tes sebelumnya.
+- Interface Pollution. Tanpa Interface Segregation Principle, kelas yang ada akan terpaksa mengimplementasi method yang tidak
+perlu mereka gunakan. Hal ini dapat menghasilkan design yang sulit untuk diimplementasikan dan meningkatkan risiko terjadinya error.
+
+Beberapa contoh dari kerugian tidak menerapkan SOLID principles:
+- SRP. Misal terdapat class `UserManager` yang mengelola data pengguna dan juga mengirim email. Karena memiliki lebih dari satu tanggungjawab, 
+perubahan kecil pada pengelolaan data atau sistem pengiriman email dapat mengubah bagian lain dari kelas ini, membuatnya sulit untuk 
+dikelola.
+- OCP. Misal terdapat fungsi `reportGenerator` yang harus diubah setiap kali ada laporan baru untuk ditambahkan. Ini membuat 
+kode sulit untuk diperluas karena setiap penambahan memerlukan modifikasi pada fungsi yang ada, meningkatkan risiko kesalahan.
+- ISP. Misal terdapat interface `MultiFunctionDevice` yang memiliki metode untuk mencetak, meng-_scan_, dan mengirim teks, tetapi 
+beberapa perangkat hanya membutuhkan fungsi mencetak. Perangkat yang hanya mencetak tetap harus mengimplementasikan metode yang tidak digunakan 
+.Hal ini menyebabkan adanya pemborosan dalam penggunaan kode.
 
 
 ## Reflection 2

@@ -12,17 +12,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-//@RequestMapping("/product")
 public class ProductController {
 
     @Autowired
     private ProductService service;
-
-    @GetMapping("")
-    public String homePage(Model model){
-        return "homepage";
-    }
-
     @GetMapping("/product/create")
     public String createProductPage(Model model){
         Product product = new Product();

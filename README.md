@@ -1,5 +1,8 @@
 # tutorial-1
 
+## Reflection 3
+#### 1. Prinsip SOLID yang diaplikasikan
+
 ## Reflection 2
 #### 1. List the code quality issue(s) that you fixed during the exercise and explain your strategy on fixing them:
 

@@ -2,6 +2,7 @@
 
 ## Reflection 3
 #### 1. Prinsip SOLID yang diaplikasikan
+- Single Responsibility Principle. Dalam tutorial kali ini, saya memisahkan kode 
 
 ## Reflection 2
 #### 1. List the code quality issue(s) that you fixed during the exercise and explain your strategy on fixing them:

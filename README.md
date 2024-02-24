@@ -5,8 +5,6 @@
 - Single Responsibility Principle. Dalam tutorial kali ini, saya memisahkan kode CarController dan HomeController dari
 ProductController karena ketiga controller tersebut memiliki tujuan berbeda. Saya juga menghilangkan extend ProductController
 pada CarController karena tidak diperlukan dan memiliki tujuan berbeda juga.
-- Open Close Principle. Method-method yang terdapat pada Car dan Product dapat dipakai untuk subclass-subclass nya,
-seperti edit, findById, create, dan delete
 - Interface Segregation. CarService dan ProductService dibuat terpisah karena object yang mengimplementasikannya hanya 
 mengimplementasikan salah satu saja, bukan keduanya.
 - Dependancy Inversion. Prinsip ini dilakukan pada CarController dengan mengganti tipe data CarServiceImpl menjadi CarService

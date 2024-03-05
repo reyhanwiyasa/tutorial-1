@@ -52,8 +52,8 @@ public class PaymentTest {
     @Test
     void testCreatePaymentSucessfulVoucher(){
         fillVoucherPayment();
-        Payment payment1 = new Payment("aaaabbbb-1234-4321-2345-f32db8620155",orders.get(1),
-                "", paymentData);
+        Payment payment1 = new Payment("aaaabbbb-1234-4321-2345-f32db8620155","",
+                orders.get(1), paymentData);
         assertSame(this.orders.get(1), payment1.getOrder());
         assertNull(payment1.getPaymentData());
         assertEquals("aaaabbbb-1234-4321-2345-f32db8620155", payment1.getId());
@@ -63,8 +63,8 @@ public class PaymentTest {
     @Test
     void testCreatePaymentFailVoucher(){
         fillVoucherPayment();
-        assertThrows(IllegalArgumentException.class, ()-> {new Payment("aaaabbbb-1234-4321-2345-f32db8620155",orders.get(1),
-                "VOUCHER", paymentDataVoucher);
+        assertThrows(IllegalArgumentException.class, ()-> {new Payment("aaaabbbb-1234-4321-2345-f32db8620155","VOUCHER",
+                orders.get(1), paymentData);
         });
     }
 }

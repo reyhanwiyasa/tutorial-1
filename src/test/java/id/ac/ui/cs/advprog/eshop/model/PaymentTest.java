@@ -62,9 +62,10 @@ public class PaymentTest {
 
     @Test
     void testCreatePaymentFailVoucher(){
-        fillVoucherPayment();
+        Map<String, String> paymentDataVoucher = new  HashMap<>();
+        paymentDataVoucher.put("voucherCode", "ESHOPABCABCABCABCABCABC");
         assertThrows(IllegalArgumentException.class, ()-> {new Payment("aaaabbbb-1234-4321-2345-f32db8620155","VOUCHER",
-                orders.get(1), paymentData);
+                orders.get(1), paymentDataVoucher);
         });
     }
 }

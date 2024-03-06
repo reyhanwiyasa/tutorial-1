@@ -5,6 +5,7 @@ import id.ac.ui.cs.advprog.eshop.enums.PaymentMethod;
 import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import id.ac.ui.cs.advprog.eshop.model.Order;
 import id.ac.ui.cs.advprog.eshop.model.Payment;
+import id.ac.ui.cs.advprog.eshop.model.PaymentCOD;
 import id.ac.ui.cs.advprog.eshop.model.PaymentVoucher;
 import id.ac.ui.cs.advprog.eshop.repository.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,5 +56,9 @@ public class PaymentServiceImpl implements PaymentService{
     public Payment createPaymentVoucher(Order order, String method, Map<String, String>paymentData){
         String uniqueId = UUID.randomUUID().toString();
         return new PaymentVoucher(uniqueId, method, order,paymentData);
+    }
+
+    public Payment createPaymentCOD(Order order, String method, Map<String, String>paymentData){
+        return null;
     }
 }

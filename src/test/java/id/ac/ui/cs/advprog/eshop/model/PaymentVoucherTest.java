@@ -69,6 +69,7 @@ public class PaymentVoucherTest {
                 paymentData,
                 PaymentStatus.SUCCESS.getValue()
         );
+        payment.setStatus(PaymentStatus.SUCCESS.getValue());
         assertSame(orders.get(1), payment.getOrder());
         assertEquals(paymentData, payment.getPaymentData());
         assertEquals("gds313vc-4de2-1fsa-xas2-af23as4w12sa", payment.getId());
@@ -87,6 +88,7 @@ public class PaymentVoucherTest {
                     paymentData,
                     "MEOW"
             );
+            payment.setStatus("MEOW");
         });
     }
 }

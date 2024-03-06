@@ -25,7 +25,7 @@ public class Payment {
     }
 
     public Payment(String id, String method, Order order, Map<String, String> paymentData) {
-        this(id, method, order, paymentData, "PENDING");
+        this(id, method, order, paymentData, PaymentStatus.PENDING.getValue());
     }
 
     public void setStatus(String status) {

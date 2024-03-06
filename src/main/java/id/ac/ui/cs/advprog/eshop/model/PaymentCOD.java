@@ -14,6 +14,10 @@ public class PaymentCOD extends Payment{
     }
     @Override
     protected void setPaymentData(Map<String, String> paymentData) {
-
+        if (paymentData.get("address").isBlank() ||
+                paymentData.get("deliveryFee").isBlank()){
+            throw new IllegalArgumentException();
+        }
+        this.paymentData = paymentData;
     }
 }

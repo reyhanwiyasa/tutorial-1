@@ -52,7 +52,7 @@ public class PaymentCODTest {
         assertSame(this.orders.getFirst(), payment1.getOrder());
         assertEquals(paymentDataCOD, payment1.getPaymentData());
         assertEquals("aaaabbbb-1234-4321-2345-f32db8620155", payment1.getId());
-        assertEquals("COD", payment1.getMethod());
+        assertEquals(PaymentMethod.COD.getValue(), payment1.getMethod());
     }
 
     @Test
@@ -60,7 +60,7 @@ public class PaymentCODTest {
         Map<String, String> paymentDataCOD = new HashMap<>();
         paymentDataCOD.put("address", "");
         paymentDataCOD.put("deliveryFee", "1");
-        assertThrows(IllegalArgumentException.class, ()-> {new PaymentCOD("aaaabbbb-1234-4321-2345-f32db8620155","COD",
+        assertThrows(IllegalArgumentException.class, ()-> {new PaymentCOD("aaaabbbb-1234-4321-2345-f32db8620155",PaymentMethod.COD.getValue(),
                 orders.getFirst(), paymentDataCOD);
         });
     }
@@ -70,7 +70,7 @@ public class PaymentCODTest {
         Map<String, String> paymentDataCOD = new HashMap<>();
         paymentDataCOD.put("address", "rumah");
         paymentDataCOD.put("deliveryFee", "");
-        assertThrows(IllegalArgumentException.class, ()-> {new PaymentCOD("aaaabbbb-1234-4321-2345-f32db8620155","COD",
+        assertThrows(IllegalArgumentException.class, ()-> {new PaymentCOD("aaaabbbb-1234-4321-2345-f32db8620155",PaymentMethod.COD.getValue(),
                 orders.getFirst(), paymentDataCOD);
         });
     }

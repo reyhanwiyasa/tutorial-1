@@ -1,5 +1,15 @@
 # tutorial-1
 
+## Reflection 4
+1. Menurut saya, menerapkan TDD pada kode membuat kode yang saya buat menjadi lebih aman dan lebih cepat. Hal ini
+disebabkan karena dengan adanya pembuatan test terlebih dahulu sebelum fitur yang ingin diimplementasikan, membuat kode
+yang dihasilkan terjamin aman apabila lulus test yang dibuat. Penerapan TDD juga membuat proses refactoring menjadi lebih
+mudah sehingga bila nanti ada perubahan yang perlu dilakukan, maka hanya sedikit usaha yang diperlukan dibanding tidak menerapkan
+TDD.
+2. Menurut saya, test-test yang dibuat telah menerapkan prinsip F.I.R.S.T karena dengan test yang minimal sudah dapat menguji
+keseluruhan kode yang ada. Tiap unit test juga tidak saling memengaruhi test yang lain karena terisolasi. Test yang dibuat
+juga dapat dijalankan berkali-kali apabila ada perubahan kode yang perlu diujikan.
+
 ## Reflection 3
 #### 1. Prinsip SOLID yang diaplikasikan
 - Single Responsibility Principle. Dalam tutorial kali ini, saya memisahkan kode CarController dan HomeController dari

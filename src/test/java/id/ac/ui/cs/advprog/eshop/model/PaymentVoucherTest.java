@@ -91,4 +91,12 @@ public class PaymentVoucherTest {
             payment.setStatus("MEOW");
         });
     }
+    @Test
+    void testCreatePaymentVoucherFail16Length(){
+        Map<String, String> paymentDataVoucher = new  HashMap<>();
+        paymentDataVoucher.put("voucherCode", "ESHOP1234567890987654321");
+        assertThrows(IllegalArgumentException.class, ()-> {new PaymentVoucher("12343212-abcd-dcba-bbbb-aaaaaaaaaaaa","VOUCHER",
+                orders.get(1), paymentDataVoucher);
+        });
+    }
 }

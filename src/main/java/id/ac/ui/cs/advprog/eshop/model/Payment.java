@@ -3,6 +3,7 @@ package id.ac.ui.cs.advprog.eshop.model;
 import java.util.Map;
 
 
+import id.ac.ui.cs.advprog.eshop.enums.PaymentMethod;
 import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import lombok.Builder;
 import lombok.Getter;
@@ -45,10 +46,10 @@ public class Payment {
     }
 
     protected void setPaymentData(Map<String, String> paymentData) {
-        if(method.equals("")){
+        if(PaymentMethod.contains(this.method)){
+            throw new IllegalArgumentException();
+        }else{
             this.paymentData = null;
-            return;
         }
-        throw new IllegalArgumentException();
     }
 }

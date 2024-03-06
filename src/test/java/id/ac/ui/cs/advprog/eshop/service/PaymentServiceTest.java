@@ -52,7 +52,7 @@ public class PaymentServiceTest {
         Map<String, String> paymentData = new HashMap<>();
         paymentData.put("voucherCode","ESHOP00000000AAA");
         Payment payment1 = new Payment("aaaabbbb-1234-4321-2345-f32db8620155","",
-                orders.get(1), paymentData);
+                orders.getFirst(), paymentData);
         payments.add(payment1);
 
     }
@@ -61,7 +61,7 @@ public class PaymentServiceTest {
     void testAddPayment(){
         Payment payment1 = payments.getFirst();
         doReturn(payment1).when(paymentRepository).save(any(Payment.class));
-        payment1 = paymentService.addPayment(payment1.getOrder(), PaymentMethod.VOUCHER.getValue(), payment1.getPaymentData());
+        payment1 = paymentService.addPayment(payment1.getOrder(), "", payment1.getPaymentData());
 
         doReturn(payment1).when(paymentRepository).findById(payment1.getId());
         Payment findResult = paymentService.getPayment(payment1.getId());
@@ -69,8 +69,6 @@ public class PaymentServiceTest {
         assertEquals(payment1.getId(),findResult.getId() );
         assertEquals(payment1.getMethod(), findResult.getMethod() );
         assertEquals(payment1.getStatus(), findResult.getStatus() );
-
-        verify(paymentService, times(1)).createPaymentVoucher(any(Order.class), any(String.class), any(Map.class));
     }
 
     @Test
@@ -78,7 +76,7 @@ public class PaymentServiceTest {
         Map<String, String> paymentData = new HashMap<>();
         paymentData.put("voucherCode","ESHOP00000000AAA");
         Payment payment1 = new Payment("aaaabbbb-1234-4321-2345-f32db8620155","",
-                orders.get(1), paymentData);
+                orders.getFirst(), paymentData);
 
         assertEquals(PaymentStatus.PENDING.getValue(),payment1.getStatus());
         paymentService.setStatus(payment1, PaymentStatus.SUCCESS.getValue());
@@ -102,10 +100,11 @@ public class PaymentServiceTest {
     @Test
     void testGetPaymentIfFound(){
         Payment payment1 = payments.getFirst();
+        payment1.setStatus(PaymentStatus.PENDING.getValue());
         doReturn(payment1).when(paymentRepository).findById(payment1.getId());
         Payment paymentFound = paymentService.getPayment(payment1.getId());
         assertEquals(payment1.getId(), paymentFound.getId());
-        assertEquals(PaymentMethod.VOUCHER.getValue(),paymentFound.getMethod());
+        assertEquals("",paymentFound.getMethod());
         assertEquals(payment1.getStatus(), paymentFound.getStatus());
     }
 

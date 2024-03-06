@@ -63,12 +63,23 @@ public class PaymentServiceTest {
         doReturn(payment1).when(paymentRepository).save(any(Payment.class));
         payment1 = paymentService.addPayment(payment1.getOrder(), "", payment1.getPaymentData());
 
+        Payment payment2 = payments.get(1);
+        doReturn(payment2).when(paymentRepository).save(any(Payment.class));
+        payment2 = paymentService.addPayment(payment2.getOrder(), PaymentMethod.COD.getValue(), payment2.getPaymentData());
+
         doReturn(payment1).when(paymentRepository).findById(payment1.getId());
         Payment findResult = paymentService.getPayment(payment1.getId());
 
         assertEquals(payment1.getId(),findResult.getId() );
-        assertEquals(payment1.getMethod(), findResult.getMethod() );
-        assertEquals(payment1.getStatus(), findResult.getStatus() );
+        assertEquals(payment1.getMethod(), findResult.getMethod());
+        assertEquals(payment1.getStatus(), findResult.getStatus());
+
+        doReturn(payment2).when(paymentRepository).findById(payment2.getId());
+        findResult = paymentService.getPayment(payment2.getId());
+        assertEquals(payment2.getId(),findResult.getId() );
+        assertEquals(payment2.getMethod(), findResult.getMethod() );
+        assertEquals(payment2.getStatus(), findResult.getStatus() );
+        verify(paymentService, times(1)).createPaymentCOD(any(Order.class), any(String.class), any(Map.class));
     }
 
     @Test

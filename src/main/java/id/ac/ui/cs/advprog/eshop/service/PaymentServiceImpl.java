@@ -27,6 +27,9 @@ public class PaymentServiceImpl implements PaymentService{
         if (method.equals(PaymentMethod.VOUCHER.getValue())){
             payment = createPaymentVoucher(order, method, paymentData);
         }
+        else if (method.equals(PaymentMethod.COD.getValue())){
+            payment = createPaymentCOD(order, method, paymentData);
+        }
         else{
             payment = new Payment(uniqueId, method, order, paymentData);
         }
@@ -59,6 +62,7 @@ public class PaymentServiceImpl implements PaymentService{
     }
 
     public Payment createPaymentCOD(Order order, String method, Map<String, String>paymentData){
-        return null;
+        String uniqueId = UUID.randomUUID().toString();
+        return new PaymentCOD(uniqueId, method, order,paymentData);
     }
 }

@@ -72,7 +72,7 @@ public class PaymentRepositoryTest {
 
     @Test
     void testAddPaymentVoucherSuccess(){
-        Payment payment = payments.get(0);
+        Payment payment = payments.getFirst();
         Payment result = paymentRepository.save(payment);
 
         Payment findResult = paymentRepository.findById(payments.get(0).getId());

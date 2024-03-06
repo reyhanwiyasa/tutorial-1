@@ -101,12 +101,12 @@ public class PaymentRepositoryTest {
         for (Payment payment : payments){
             paymentRepository.save(payment);
         }
-        Payment findResult = paymentRepository.findById(payments.get(0).getId());
-        assertEquals(payments.get(0).getId(), findResult.getId());
-        assertSame(payments.get(0).getPaymentData(), findResult.getPaymentData());
-        assertSame(payments.get(0).getOrder(), findResult.getOrder());
-        assertEquals(payments.get(0).getStatus(), findResult.getStatus());
-        assertEquals(payments.get(0).getMethod(), findResult.getMethod());
+        Payment findResult = paymentRepository.findById(payments.getFirst().getId());
+        assertEquals(payments.getFirst().getId(), findResult.getId());
+        assertSame(payments.getFirst().getPaymentData(), findResult.getPaymentData());
+        assertSame(payments.getFirst().getOrder(), findResult.getOrder());
+        assertEquals(payments.getFirst().getStatus(), findResult.getStatus());
+        assertEquals(payments.getFirst().getMethod(), findResult.getMethod());
     }
 
     @Test

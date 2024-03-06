@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 
 public class PaymentTest {
     private Map<String, String> paymentData;
-    private  List<Order> orders;;
+    private  List<Order> orders;
     private List<Product> products;
 
     @BeforeEach

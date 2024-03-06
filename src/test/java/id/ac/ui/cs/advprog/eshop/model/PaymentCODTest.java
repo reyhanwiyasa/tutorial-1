@@ -48,7 +48,7 @@ public class PaymentCODTest {
         Map<String, String> paymentDataCOD = new HashMap<>();
         paymentDataCOD.put("address", "rumah");
         paymentDataCOD.put("deliveryFee", "1");
-        Payment payment1 = new PaymentCOD("aaaabbbb-1234-4321-2345-f32db8620155",orders.getFirst(), "COD", paymentDataCOD);
+        Payment payment1 = new PaymentCOD("aaaabbbb-1234-4321-2345-f32db8620155","COD", orders.getFirst(), paymentDataCOD);
         assertSame(this.orders.getFirst(), payment1.getOrder());
         assertEquals(paymentDataCOD, payment1.getPaymentData());
         assertEquals("aaaabbbb-1234-4321-2345-f32db8620155", payment1.getId());
@@ -60,8 +60,8 @@ public class PaymentCODTest {
         Map<String, String> paymentDataCOD = new HashMap<>();
         paymentDataCOD.put("address", "");
         paymentDataCOD.put("deliveryFee", "1");
-        assertThrows(IllegalArgumentException.class, ()-> {new PaymentCOD("aaaabbbb-1234-4321-2345-f32db8620155",orders.getFirst(),
-                "COD", paymentDataCOD);
+        assertThrows(IllegalArgumentException.class, ()-> {new PaymentCOD("aaaabbbb-1234-4321-2345-f32db8620155","COD",
+                orders.getFirst(), paymentDataCOD);
         });
     }
 
@@ -70,8 +70,8 @@ public class PaymentCODTest {
         Map<String, String> paymentDataCOD = new HashMap<>();
         paymentDataCOD.put("address", "rumah");
         paymentDataCOD.put("deliveryFee", "");
-        assertThrows(IllegalArgumentException.class, ()-> {new PaymentCOD("aaaabbbb-1234-4321-2345-f32db8620155",orders.get(1),
-                "COD", paymentDataCOD);
+        assertThrows(IllegalArgumentException.class, ()-> {new PaymentCOD("aaaabbbb-1234-4321-2345-f32db8620155","COD",
+                orders.getFirst(), paymentDataCOD);
         });
     }
 }

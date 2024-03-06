@@ -3,6 +3,7 @@ package id.ac.ui.cs.advprog.eshop.model;
 import java.util.Map;
 
 
+import id.ac.ui.cs.advprog.eshop.enums.PaymentStatus;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -20,7 +21,7 @@ public class Payment {
         this.method = method;
         this.setOrder(order);
         this.setPaymentData(paymentData);
-        this.setStatus(status);
+        this.status=PaymentStatus.PENDING.getValue();
     }
 
     public Payment(String id, String method, Order order, Map<String, String> paymentData) {
@@ -28,11 +29,11 @@ public class Payment {
     }
 
     public void setStatus(String status) {
-        if (status.equals("SUCCESS") || status.equals("REJECTED") || status.equals("PENDING")) {
-            this.status = status;
-            return;
+        if(PaymentStatus.contains(status)){
+            this.status=status;
+        }else{
+            throw new IllegalArgumentException();
         }
-        throw new IllegalArgumentException("Invalid payment status");
     }
 
     private void setOrder(Order order) {
